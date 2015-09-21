@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <title>Detour - Ruby Arrays and Hashes</title>
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" />
+   <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700'
+  rel='stylesheet' type='text/css'>
+   <link href="/stylesheets/all.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <div id="main" role="main">
+       <nav>
+  <ul>
+    <li>
+      <a class="blog-title" href="/">Detour</a>
+    </li>
+  </ul>
+</nav>
+       <h2>Ruby Arrays and Hashes</h2>
+      <p>We started Ruby this week and its been fun running programs to do fun things, like figure out leap years, calculate triangles and collect and print information. This post will cover two classes in Ruby: the Array and the Hash .</p>
+
+<h2>[ Arrays ]</h2>
+
+<p>An array is a list of items, and it can be filled with any type of object: integers, floats, strings, even other arrays or hashes. The objects are listed in order and are separated by commas.</p>
+<pre class="highlight ruby"><code> <span class="n">numbers_array</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span> <span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+          <span class="n">array_ofwords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"hey"</span><span class="p">,</span> <span class="s2">"there"</span><span class="p">,</span> <span class="s2">"delilah"</span><span class="p">]</span>
+          <span class="n">combined_array</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"hey"</span><span class="p">,</span> <span class="s2">"October"</span><span class="p">,</span> <span class="mi">11</span><span class="o">.</span><span class="mi">99</span><span class="p">,</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span> <span class="p">]]</span>
+</code></pre>
+
+<p>An array can also be defined without any elements inside it, and later added to/deleted from:</p>
+<pre class="highlight ruby"><code> <span class="n">animals</span> <span class="o">=</span> <span class="no">Array</span><span class="p">.</span><span class="nf">new</span> <span class="c1">#defines a new empty array called "animals"</span>
+
+          <span class="n">animals</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="s2">"dog"</span><span class="p">)</span> <span class="c1">#adds "dog" to "animals" array</span>
+          <span class="n">animals</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="s2">"cat"</span><span class="p">)</span> <span class="c1">#another way to add to an array</span>
+
+          <span class="n">animals</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="s2">"cat"</span><span class="p">)</span>  <span class="c1">#deletes "cat" from the array</span>
+          <span class="n">animals</span><span class="p">.</span><span class="nf">pop</span>  <span class="c1">#removes and returns the last element in the animals array</span>
+
+</code></pre>
+
+<p>Arrays are really neat: they are ordered and are integer-indexed starting at 0. This indexing allows us to access elements in an array easily</p>
+<pre class="highlight ruby"><code><span class="n">array_ofwords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"hey"</span><span class="p">,</span> <span class="s2">"there"</span><span class="p">,</span> <span class="s2">"delilah"</span><span class="p">]</span>
+
+          <span class="n">array_ofwords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>      <span class="c1"># returns the zeroth element ("hey")</span>
+          <span class="n">array_ofwords</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>      <span class="c1"># returns the third element  ("delilah")</span>
+          <span class="n">array_ofwords</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>     <span class="c1"># returns the last (1st from the end) element</span>
+          <span class="n">array_ofwords</span><span class="p">.</span><span class="nf">first</span>   <span class="c1"># returns the first element</span>
+          <span class="n">array_ofwords</span><span class="p">.</span><span class="nf">last</span>    <span class="c1"># returns the last element</span>
+</code></pre>
+
+<p>There are a lot of methods that can be used on arrays, and they can be found <a href="http://www.ruby-doc.org/core-2.1.3/Array.html">here</a>!</p>
+
+<h2>{ Hashes }</h2>
+
+<p>A hash is a list of of pairs, to be specific, key-value pairs. They are similar to arrays, but instead of being integer indexed, hashes are indexed by the keys. This means that you use a key to find something in a hash. Keys can be integers, strings or symbols, but must be unique to the hash they are part of, and values can be any Ruby object. There are several ways to create a hash:</p>
+<pre class="highlight ruby"><code>   <span class="n">grades_hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span> <span class="c1">#creates a new hash</span>
+
+            <span class="c1">#another way</span>
+
+            <span class="n">grades_hash</span> <span class="o">=</span><span class="p">{</span>
+              <span class="s2">"Joe"</span> <span class="o">=&gt;</span> <span class="n">grade1</span><span class="p">,</span>   <span class="c1"># "key" =&gt; value,</span>
+              <span class="ss">:Sara</span> <span class="o">=&gt;</span> <span class="n">grade2</span>    <span class="c1">#another way to create :key=&gt;value pair</span>
+              <span class="p">}</span>
+
+
+              <span class="c1">#to retrieve info from the hash</span>
+              <span class="n">grades_hash</span><span class="p">[</span><span class="s2">"Joe"</span><span class="p">]</span>
+</code></pre>
+
+<p>More information on hashes and the methods that can be used can be found <a href="http://ruby-doc.org/core-2.1.3/Hash.html">here</a> .</p>
+
+<p>Although both arrays and hashes can be expanded to hold new elements, hashes provide more flexibility. Also, hashes have a default value that is returned when a command tries to access keys that do not exist in a hash. The default value for this is nil, but it can be reset to anything else.</p>
+
+      <footer>
+  <ul class="large-column">
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+          <li>
+            <a href="/2015/06/19/trying-out-middleman-and-its-driving-me-crazy/">Middleman, you are driving me crazy</a>
+          </li>
+          <li>
+            <a href="/2014/12/07/asking-questions/">Asking Questions & Searching for Answers</a>
+          </li>
+          <li>
+            <a href="/2014/12/07/blogging/">Blogging</a>
+          </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul class="small-column">
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+          <li><a href="/tags/learning/">Learning (8)</a></li>
+          <li><a href="/tags/dbc/">DBC (9)</a></li>
+          <li><a href="/tags/git/">Git (1)</a></li>
+          <li><a href="/tags/css/">CSS (1)</a></li>
+          <li><a href="/tags/ruby/">Ruby (5)</a></li>
+          <li><a href="/tags/tech/">Tech (2)</a></li>
+          <li><a href="/tags/javascript/">Javascript (1)</a></li>
+          <li><a href="/tags/bitcoin/">Bitcoin (1)</a></li>
+          <li><a href="/tags/code/">Code (1)</a></li>
+          <li><a href="/tags/searching/">Searching (1)</a></li>
+          <li><a href="/tags/middleman/">Middleman (1)</a></li>
+      </ol>
+    </li>
+  <ul>
+</footer>
+    </div>
+
+  </body>
+</html>

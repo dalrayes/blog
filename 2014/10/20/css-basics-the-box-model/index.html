@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <title>Detour</title>
+    <title>Detour - CSS Basics - The Box Model</title>
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" />
    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700'
   rel='stylesheet' type='text/css'>
@@ -15,20 +15,29 @@
        <nav>
   <ul>
     <li>
-      <a class="blog-title" href="index.html">Detour</a>
+      <a class="blog-title" href="/">Detour</a>
     </li>
   </ul>
 </nav>
-       <h2></h2>
-      <h1>Archive for
-    Jun 19 2015
-</h1>
+       <h2>CSS Basics - The Box Model</h2>
+      <p>Everything that goes into a webpage is treated as a rectangular box - even if an object or element itself is not a rectangle. This concept, referred to as The Box Model, is what forms the basis of CSS. CSS, or cascading style sheets, are used to format the presentation details of a webpage such as layout, colors, fonts. Separating CSS from content makes it easier and faster to make formatting changes.</p>
 
+<p>The Box Model illustrates that each element is a rectangle with padding, borders, and margins.</p>
 
-<ul>
-    <li><a href="/2015/06/19/trying-out-middleman-and-its-driving-me-crazy/">Middleman, you are driving me crazy</a> <span>Jun 19</span></li>
-</ul>
+<p><img alt="Box Model" src="/images/boxmodel.jpg" /></p>
 
+<p>Elements have:</p>
+
+<p><li> <strong>Padding</strong>: (transparent) Like an internal margin or frame, separating the element from its border.</li></p>
+
+<p><li> <strong>Border</strong>: (visible) A border is visible frame around an element and can be customized by different thicknesses, colors and styles.</li></p>
+
+<p><li><strong>Margin</strong>: (transparent) The outside border of an element, generally used for placing elements on the screen, or creating spacing between elements.</li></p>
+
+<p>This means that the actual width and height of an element are a calculation:</p>
+
+<p><li><strong>ACTUAL WIDTH</strong>= margin-left + border-left + padding-left + WIDTH + padding-right + border-right + margin-right</li>
+<li><strong>ACTUAL HEIGHT</strong>= margin-top + border-top + padding-top + HEIGHT + padding-bottom + border-bottom + margin-bottom</li></p>
 
       <footer>
   <ul class="large-column">
