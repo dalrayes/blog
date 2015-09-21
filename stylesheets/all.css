@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
 /* line 1, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_buttons.scss */
 button, input[type="button"], input[type="reset"], input[type="submit"],
 button {
@@ -583,13 +584,14 @@ nav {
 
 /* line 11, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_nav.scss */
 .blog-title {
+  font-family: 'Poiret One', cursive;
   font-size: 2em;
   font-weight: 700;
-  letterspacing: 4px;
-  text-transform: uppercase; }
+  letterspacing: 4px; }
 
 /* line 1, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_footer.scss */
 footer {
   border-top: 1px solid #ddd;
   margin: 2em 0;
-  padding-top: 2em; }
+  padding-top: 2em;
+  font-size: 0.8em; }
