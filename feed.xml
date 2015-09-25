@@ -5,10 +5,26 @@
   <id>http://blog.url.com/</id>
   <link href="http://blog.url.com/"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2015-06-19T16:54:00-05:00</updated>
+  <updated>2015-09-21T13:36:00-05:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Reading code</title>
+    <link rel="alternate" href="http://blog.url.com/2015/09/21/windy-city-rails-day-1/"/>
+    <id>http://blog.url.com/2015/09/21/windy-city-rails-day-1/</id>
+    <published>2015-09-21T13:36:00-05:00</published>
+    <updated>2015-09-24T21:01:23-05:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;I attended &lt;a href="https://www.windycityrails.org" target="_blank"&gt;Windy City Rails&lt;/a&gt; in Chicago last week, and it was my first ruby/rails related conference since graduating from Dev Bootcamp. I learned about a couple of interesting topics of which I will be posting after this.&lt;/p&gt;
+
+&lt;p&gt;One of the more interesting things I learned -a bit of an &amp;#39;aha&amp;#39; moment- was from &lt;a href="https://www.twitter.com/jeffcohen" target='_blank'&gt;Jeff Cohen&lt;/a&gt;.  We spend a lot of time writing code and trying to learn new code by &amp;#39;coding,&amp;#39; but what we tend to forget is that we can learn a ton from &lt;em&gt;reading&lt;/em&gt; code.  It might not seem straightforward but Jeff talked about thinking of your favorite author, and thinking about how many books the author probably read vs. the books he/she wrote.&lt;/p&gt;
+
+&lt;p&gt;A good place to start is looking at your Gemfile, picking one of the gems you like, and checking out their source code on Github. You don&amp;#39;t necessarily need to understand everything in the code, but you will surely see something interesting that you could look up and learn from!&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Middleman, you are driving me crazy</title>
     <link rel="alternate" href="http://blog.url.com/2015/06/19/trying-out-middleman-and-its-driving-me-crazy/"/>
@@ -159,131 +175,6 @@
 
 &lt;p&gt;&lt;li&gt;More on Ruby loops &lt;a href="http://www.tutorialspoint.com/ruby/ruby_loops.htm"&gt;here&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;More on Javascript loops &lt;a href="http://www.w3schools.com/js/js_loop_for.asp"&gt;here&lt;/a&gt; and &lt;a href="http://www.w3schools.com/js/js_loop_while.asp"&gt;here&lt;/a&gt;&lt;/li&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Inheritance &amp; Composition</title>
-    <link rel="alternate" href="http://blog.url.com/2014/11/16/inheritance-and-composition/"/>
-    <id>http://blog.url.com/2014/11/16/inheritance-and-composition/</id>
-    <published>2014-11-16T15:54:00-06:00</published>
-    <updated>2015-06-24T12:52:25-05:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;In Ruby, we use classes to group the behaviors, or methods, that objects can use. To connect these classes, we have several options, among them are inheritance and composition.&lt;/p&gt;
-
-&lt;h2&gt;Inheritance&lt;/h2&gt;
-
-&lt;p&gt;&lt;li&gt;Inheritance allows one class (child, sub-class) to get most or all features from another class (parent, superclass). The sub-class is usually a specialized form of its super class.&lt;/li&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;li&gt;A sub-class can only have one super-class. This is called single inheritance. A superclass can have many subclasses.&lt;/li&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;li&gt;In the real world, a child inherits certain traits from his / her parent. In Ruby, this is called implicit inheritance, where a subclass inherits methods of a parent class.&lt;/li&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;li&gt;In Ruby, a subclass can also choose to change certain parent methods, or override them. Unfortunately, we do not have that option as humans! Ruby also allows the subclass to call a parent&amp;#39;s method using (super).&lt;/li&gt;&lt;/p&gt;
-
-&lt;p&gt;For example:&lt;/p&gt;
-&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Homer&lt;/span&gt;
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;skintone&lt;/span&gt;
-    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"Skintone: yellow"&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;clothing_top&lt;/span&gt;
-    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"White polo"&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;clothing_bottom&lt;/span&gt;
-    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"Blue bottom"&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-&lt;span class="k"&gt;end&lt;/span&gt;
-
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Bart&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;Homer&lt;/span&gt;     &lt;span class="c1"&gt;#inheritance illustrates an "is a" relationship&lt;/span&gt;
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;clothing_top&lt;/span&gt;
-    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"Red t-shirt"&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;clothing_bottom&lt;/span&gt;
-    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"Blue shorts"&lt;/span&gt;
-    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"--or alternatively--"&lt;/span&gt;
-    &lt;span class="k"&gt;super&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-&lt;span class="k"&gt;end&lt;/span&gt;
-
-&lt;span class="n"&gt;homer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Homer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;
-&lt;span class="n"&gt;bart&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Bart&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;
-
-
-&lt;span class="c1"&gt;#Implicit Inheritance&lt;/span&gt;
-&lt;span class="n"&gt;homer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;skintone&lt;/span&gt;          &lt;span class="c1"&gt;#Skintone: yellow&lt;/span&gt;
-&lt;span class="n"&gt;bart&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;skintone&lt;/span&gt;           &lt;span class="c1"&gt;#Skintone: yellow&lt;/span&gt;
-
-&lt;span class="c1"&gt;#Overriding Inheritance&lt;/span&gt;
-&lt;span class="n"&gt;homer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;clothing_top&lt;/span&gt;      &lt;span class="c1"&gt;#White polo&lt;/span&gt;
-&lt;span class="n"&gt;bart&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;clothing_top&lt;/span&gt;       &lt;span class="c1"&gt;#Red t-shirt&lt;/span&gt;
-
-&lt;span class="c1"&gt;#Calling the parent's method using Super&lt;/span&gt;
-&lt;span class="n"&gt;homer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;clothing_bottom&lt;/span&gt;   &lt;span class="c1"&gt;#Blue Bottom&lt;/span&gt;
-&lt;span class="n"&gt;bart&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;clothing_bottom&lt;/span&gt;    &lt;span class="c1"&gt;#Blue shorts&lt;/span&gt;
-                        &lt;span class="c1"&gt;#--or alternatively--&lt;/span&gt;
-                        &lt;span class="c1"&gt;#Blue bottom&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Although inheritance makes it easy to access methods of a parent class easily, it increases complexity when the code grows in size, multiple subclasses are added and new functions are added to the parent class. Overtime, it may appear that there is less and less in common between the super class and sub classes, but the linkage is too deep to alter, causing difficulties with your code.&lt;/p&gt;
-
-&lt;h2&gt;Composition&lt;/h2&gt;
-
-&lt;p&gt;Composition is an alternative to inheritance; it links classes but allows objects to be independent of each other.&lt;/p&gt;
-&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Homer&lt;/span&gt;
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;skintone&lt;/span&gt;
-    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"Skintone: yellow"&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;clothing_top&lt;/span&gt;
-    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"White polo"&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;clothing_bottom&lt;/span&gt;
-    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"Blue bottom"&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-&lt;span class="k"&gt;end&lt;/span&gt;
-
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Bart&lt;/span&gt;
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;initialize&lt;/span&gt;
-    &lt;span class="vi"&gt;@dad&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Homer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;    &lt;span class="c1"&gt;#composition illustrates a "has a" relationship&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;skintone&lt;/span&gt;
-    &lt;span class="vi"&gt;@dad&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;skintone&lt;/span&gt;       &lt;span class="c1"&gt;#added in the Bart class but calls the Homer method&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;clothing_top&lt;/span&gt;
-    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"Red t-shirt"&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;clothing_bottom&lt;/span&gt;
-    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"Blue shorts"&lt;/span&gt;
-    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"--or alternatively--"&lt;/span&gt;
-    &lt;span class="vi"&gt;@dad&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;clothing_bottom&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-&lt;span class="k"&gt;end&lt;/span&gt;
-
-&lt;span class="n"&gt;homer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Homer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;
-&lt;span class="n"&gt;bart&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Bart&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;
-
-
-&lt;span class="n"&gt;homer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;skintone&lt;/span&gt;          &lt;span class="c1"&gt;#Skintone: yellow&lt;/span&gt;
-&lt;span class="n"&gt;bart&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;skintone&lt;/span&gt;           &lt;span class="c1"&gt;#Skintone: yellow&lt;/span&gt;
-
-&lt;span class="n"&gt;homer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;clothing_top&lt;/span&gt;      &lt;span class="c1"&gt;#White polo&lt;/span&gt;
-&lt;span class="n"&gt;bart&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;clothing_top&lt;/span&gt;       &lt;span class="c1"&gt;#Red t-shirt&lt;/span&gt;
-
-&lt;span class="n"&gt;homer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;clothing_bottom&lt;/span&gt;   &lt;span class="c1"&gt;#Blue Bottom&lt;/span&gt;
-&lt;span class="n"&gt;bart&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;clothing_bottom&lt;/span&gt;    &lt;span class="c1"&gt;#Blue shorts&lt;/span&gt;
-                        &lt;span class="c1"&gt;#--or alternatively--&lt;/span&gt;
-                        &lt;span class="c1"&gt;#Blue bottom&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you can see, the resulting output is the same as what was done with inheritance.&lt;/p&gt;
 </content>
   </entry>
 </feed>
