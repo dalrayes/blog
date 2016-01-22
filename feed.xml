@@ -5,16 +5,80 @@
   <id>http://blog.url.com/</id>
   <link href="http://blog.url.com/"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2015-09-21T13:36:00-05:00</updated>
+  <updated>2016-01-21T18:50:00-06:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>PostgreSQL &amp; Homebrew</title>
+    <link rel="alternate" href="http://blog.url.com/2016/01/22/postgresql-homebrew/"/>
+    <id>http://blog.url.com/2016/01/22/postgresql-homebrew/</id>
+    <published>2016-01-21T18:50:00-06:00</published>
+    <updated>2016-01-21T23:06:31-06:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;I think my battery died last night on my Macbook and when I started the rails app I was working on this morning I saw this error:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;PG::ConnectionBad (could not connect to server: No such file or directory
+Is the server running locally and accepting
+connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;None of my rake commands were working and I couldn&amp;#39;t load my site on localhost.&lt;/p&gt;
+
+&lt;p&gt;I looked up the error and found these links the most useful:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://kkob.us/2016/01/09/homebrew-and-postgresql-9-5/" target="_blank"&gt;Keita&amp;#39;s Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://coderwall.com/p/zf-fww/postgres-on-osx-with-homebrew-not-running-after-osx-crash" target="_blank"&gt;Coderwall&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/19828385/pgconnectionbad-could-not-connect-to-server-connection-refused" target=_"blank"&gt;Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I ended up finding that somehow, I had two versions of postgres under &lt;code&gt;usr/local/var&lt;/code&gt; (postgres) and (postgres9.5)&lt;/p&gt;
+
+&lt;p&gt;After much frustration, I did the following:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;brew uninstall postgresql
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and then:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;gem uninstall pg
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I then deleted all postgres files in &lt;code&gt;usr/local/var&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Double checked there was no postgresql by running &lt;code&gt;brew list&lt;/code&gt;, then ran:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;brew install postgresql
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I ran &lt;code&gt;pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I then checked that the server was running: &lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;    &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ps&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="n"&gt;postgres&lt;/span&gt;
+     &lt;span class="mi"&gt;5141&lt;/span&gt;   &lt;span class="sc"&gt;??&lt;/span&gt;  &lt;span class="no"&gt;Ss&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="ss"&gt;postgres: &lt;/span&gt;&lt;span class="n"&gt;checkpointer&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;
+     &lt;span class="mi"&gt;5142&lt;/span&gt;   &lt;span class="sc"&gt;??&lt;/span&gt;  &lt;span class="no"&gt;Ss&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;01&lt;/span&gt; &lt;span class="ss"&gt;postgres: &lt;/span&gt;&lt;span class="n"&gt;writer&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;
+     &lt;span class="mi"&gt;5143&lt;/span&gt;   &lt;span class="sc"&gt;??&lt;/span&gt;  &lt;span class="no"&gt;Ss&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="ss"&gt;postgres: &lt;/span&gt;&lt;span class="n"&gt;wal&lt;/span&gt; &lt;span class="n"&gt;writer&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;
+     &lt;span class="mi"&gt;5144&lt;/span&gt;   &lt;span class="sc"&gt;??&lt;/span&gt;  &lt;span class="no"&gt;Ss&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="ss"&gt;postgres: &lt;/span&gt;&lt;span class="n"&gt;autovacuum&lt;/span&gt; &lt;span class="n"&gt;launcher&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;
+     &lt;span class="mi"&gt;5145&lt;/span&gt;   &lt;span class="sc"&gt;??&lt;/span&gt;  &lt;span class="no"&gt;Ss&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="ss"&gt;postgres: &lt;/span&gt;&lt;span class="n"&gt;stats&lt;/span&gt; &lt;span class="n"&gt;collector&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;
+     &lt;span class="mi"&gt;5133&lt;/span&gt; &lt;span class="n"&gt;s000&lt;/span&gt;  &lt;span class="no"&gt;S&lt;/span&gt;      &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;03&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="no"&gt;Cellar&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;postgresql&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;postgres&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="no"&gt;D&lt;/span&gt; &lt;span class="sr"&gt;/usr/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;postgres&lt;/span&gt;
+     &lt;span class="mi"&gt;5161&lt;/span&gt; &lt;span class="n"&gt;s000&lt;/span&gt;  &lt;span class="no"&gt;U&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="n"&gt;postgres&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Lastly, bundle install &amp;amp; Reboot rails!!&lt;/p&gt;
+
+&lt;p&gt;Side note: 
+A fellow DBC alum recommended this command as well - you might find it useful:
+&lt;code&gt;pg_ctl restart -D /usr/local/var/postgres -m fast&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This command kills postgres entirely, then restarts it…!&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Reading code</title>
     <link rel="alternate" href="http://blog.url.com/2015/09/21/windy-city-rails-day-1/"/>
     <id>http://blog.url.com/2015/09/21/windy-city-rails-day-1/</id>
     <published>2015-09-21T13:36:00-05:00</published>
-    <updated>2015-09-24T21:01:23-05:00</updated>
+    <updated>2016-01-21T23:04:41-06:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -30,7 +94,7 @@
     <link rel="alternate" href="http://blog.url.com/2015/06/19/trying-out-middleman-and-its-driving-me-crazy/"/>
     <id>http://blog.url.com/2015/06/19/trying-out-middleman-and-its-driving-me-crazy/</id>
     <published>2015-06-19T16:54:00-05:00</published>
-    <updated>2015-09-21T12:55:02-05:00</updated>
+    <updated>2016-01-21T23:04:41-06:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -42,7 +106,7 @@
     <link rel="alternate" href="http://blog.url.com/2014/12/07/asking-questions/"/>
     <id>http://blog.url.com/2014/12/07/asking-questions/</id>
     <published>2014-12-07T15:54:00-06:00</published>
-    <updated>2015-06-22T15:29:35-05:00</updated>
+    <updated>2016-01-21T23:04:41-06:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -70,7 +134,7 @@
     <link rel="alternate" href="http://blog.url.com/2014/12/07/blogging/"/>
     <id>http://blog.url.com/2014/12/07/blogging/</id>
     <published>2014-12-07T15:54:00-06:00</published>
-    <updated>2015-06-22T15:23:58-05:00</updated>
+    <updated>2016-01-21T23:04:41-06:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -84,7 +148,7 @@
     <link rel="alternate" href="http://blog.url.com/2014/11/30/bitcoin/"/>
     <id>http://blog.url.com/2014/11/30/bitcoin/</id>
     <published>2014-11-30T15:54:00-06:00</published>
-    <updated>2015-06-24T13:04:33-05:00</updated>
+    <updated>2016-01-21T23:04:41-06:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -115,66 +179,6 @@
 &lt;li&gt;PayPal is working to enable certain PayPal merchants to accept bitcoin as a form of payment from their customers.&lt;/li&gt;
 &lt;li&gt;There are now bitcoin ATMs (&amp;quot;BTMs&amp;quot;) nationwide. Find them here.&lt;/li&gt;
 &lt;li&gt;Conan explains &lt;a href="https://www.youtube.com/watch?v=Vd19SboRhVY"&gt;bitcoin&lt;/a&gt;! #kidding&lt;/li&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Javascript vs Ruby</title>
-    <link rel="alternate" href="http://blog.url.com/2014/11/24/javascript-vs-ruby/"/>
-    <id>http://blog.url.com/2014/11/24/javascript-vs-ruby/</id>
-    <published>2014-11-24T15:54:00-06:00</published>
-    <updated>2015-06-24T17:53:08-05:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;h3&gt;Looping Through!&lt;/h3&gt;
-
-&lt;p&gt;A week into using Javascript and I miss Ruby already. Ruby is more intuitive and to the point, but Javascript feels more verbose, like something from English literature&lt;/p&gt;
-
-&lt;p&gt;Below, is an example of an annoying loop using ruby.&lt;/p&gt;
-&lt;pre class="highlight ruby"&gt;&lt;code&gt;
-  &lt;span class="n"&gt;loopy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
-
-  &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="n"&gt;loopy&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
-    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"Are we there yet?"&lt;/span&gt;
-    &lt;span class="n"&gt;answer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;gets&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;chomp&lt;/span&gt;
-
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;answer&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'yes'&lt;/span&gt;
-      &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"Finally!"&lt;/span&gt;
-
-    &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="n"&gt;answer&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'no'&lt;/span&gt;
-      &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"nooo"&lt;/span&gt;
-
-    &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="n"&gt;answer&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'stop'&lt;/span&gt;
-      &lt;span class="n"&gt;loopy&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
-      &lt;span class="k"&gt;break&lt;/span&gt;
-
-    &lt;span class="k"&gt;end&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;On the other hand, if we were to do something similar in Javascript it would look something like this:&lt;/p&gt;
-&lt;pre class="highlight javascript"&gt;&lt;code&gt;
-  &lt;span class="nx"&gt;loopy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
-
-  &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;loopy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;answer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;prompt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Are we there yet?"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-      &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;answer&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"yes"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Finally!!!"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-      &lt;span class="p"&gt;}&lt;/span&gt;
-      &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;answer&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"no"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Nooo!!!"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-      &lt;span class="p"&gt;}&lt;/span&gt;
-      &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="nx"&gt;loopy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-      &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Although they look fairly similar, Javascript requires much more syntax (brackets and colons) than ruby. For looping, in addition to &lt;em&gt;while&lt;/em&gt;, &lt;em&gt;for&lt;/em&gt; and &lt;em&gt;for...in&lt;/em&gt; loops, ruby provides methods &lt;em&gt;until&lt;/em&gt;, &lt;em&gt;each&lt;/em&gt;, and &lt;em&gt;times&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;li&gt;More on Ruby loops &lt;a href="http://www.tutorialspoint.com/ruby/ruby_loops.htm"&gt;here&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;More on Javascript loops &lt;a href="http://www.w3schools.com/js/js_loop_for.asp"&gt;here&lt;/a&gt; and &lt;a href="http://www.w3schools.com/js/js_loop_while.asp"&gt;here&lt;/a&gt;&lt;/li&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>
