@@ -1,0 +1,36 @@
+<%= Rouge::Themes::Github.render(:scope => '.highlight') %>
+
+pre {
+  border: solid 1px #ddd;
+  background: #eee;
+  padding: 1.5rem 3.5%;
+  line-height: 23px;
+  margin-bottom: 30px;
+  white-space: pre;
+  overflow-x: auto;
+  word-break: inherit;
+  word-wrap: inherit;
+  font-size: 1.2em;
+}
+
+.highlight td {
+    padding: 8px 15px;
+}
+
+.highlight {
+  background-color: #eee;
+}
+
+.gl { 
+  background: #fafafa;
+  border-right: 1px solid #ddd;
+  color: #999;
+  
+  /* Stop line numbers being visually selected */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
