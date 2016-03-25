@@ -27,13 +27,13 @@ After much frustration, I did the following:
 
 	brew uninstall postgresql
 
-and then
+and then:
 		
 	gem uninstall pg
 
 I then deleted all postgres files in `usr/local/var`
 
-Double checked there was no postgresql by running `brew list`
+Double checked there was no postgresql by running `brew list`, then ran:
 
 	brew install postgresql
 
@@ -60,6 +60,6 @@ Side note:
 A fellow DBC alum recommended this command as well - you might find it useful:
 `pg_ctl restart -D /usr/local/var/postgres -m fast `
 
-This command kills postgres entirely, then restarts it… 
+This command kills postgres entirely, then restarts it…!
 
 
