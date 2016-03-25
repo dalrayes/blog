@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Blog Name</title>
+  <subtitle>Blog subtitle</subtitle>
+  <id>http://blog.url.com/</id>
+  <link href="http://blog.url.com/"/>
+  <link href="http://blog.url.com/feed.xml" rel="self"/>
+  <updated>2016-01-21T18:50:00-06:00</updated>
+  <author>
+    <name>Blog Author</name>
+  </author>
+  <entry>
+    <title>PostgreSQL &amp; Homebrew</title>
+    <link rel="alternate" href="http://blog.url.com/2016/01/22/postgresql-homebrew/"/>
+    <id>http://blog.url.com/2016/01/22/postgresql-homebrew/</id>
+    <published>2016-01-21T18:50:00-06:00</published>
+    <updated>2016-01-21T23:06:31-06:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;I think my battery died last night on my Macbook and when I started the rails app I was working on this morning I saw this error:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;PG::ConnectionBad (could not connect to server: No such file or directory
+Is the server running locally and accepting
+connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;None of my rake commands were working and I couldn&amp;#39;t load my site on localhost.&lt;/p&gt;
+
+&lt;p&gt;I looked up the error and found these links the most useful:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://kkob.us/2016/01/09/homebrew-and-postgresql-9-5/" target="_blank"&gt;Keita&amp;#39;s Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://coderwall.com/p/zf-fww/postgres-on-osx-with-homebrew-not-running-after-osx-crash" target="_blank"&gt;Coderwall&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/19828385/pgconnectionbad-could-not-connect-to-server-connection-refused" target=_"blank"&gt;Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I ended up finding that somehow, I had two versions of postgres under &lt;code&gt;usr/local/var&lt;/code&gt; (postgres) and (postgres9.5)&lt;/p&gt;
+
+&lt;p&gt;After much frustration, I did the following:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;brew uninstall postgresql
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and then:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;gem uninstall pg
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I then deleted all postgres files in &lt;code&gt;usr/local/var&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Double checked there was no postgresql by running &lt;code&gt;brew list&lt;/code&gt;, then ran:&lt;/p&gt;
+&lt;pre class="highlight plaintext"&gt;&lt;code&gt;brew install postgresql
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I ran &lt;code&gt;pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I then checked that the server was running: &lt;/p&gt;
+&lt;pre class="highlight ruby"&gt;&lt;code&gt;    &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ps&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="n"&gt;postgres&lt;/span&gt;
+     &lt;span class="mi"&gt;5141&lt;/span&gt;   &lt;span class="sc"&gt;??&lt;/span&gt;  &lt;span class="no"&gt;Ss&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="ss"&gt;postgres: &lt;/span&gt;&lt;span class="n"&gt;checkpointer&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;
+     &lt;span class="mi"&gt;5142&lt;/span&gt;   &lt;span class="sc"&gt;??&lt;/span&gt;  &lt;span class="no"&gt;Ss&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;01&lt;/span&gt; &lt;span class="ss"&gt;postgres: &lt;/span&gt;&lt;span class="n"&gt;writer&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;
+     &lt;span class="mi"&gt;5143&lt;/span&gt;   &lt;span class="sc"&gt;??&lt;/span&gt;  &lt;span class="no"&gt;Ss&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="ss"&gt;postgres: &lt;/span&gt;&lt;span class="n"&gt;wal&lt;/span&gt; &lt;span class="n"&gt;writer&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;
+     &lt;span class="mi"&gt;5144&lt;/span&gt;   &lt;span class="sc"&gt;??&lt;/span&gt;  &lt;span class="no"&gt;Ss&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="ss"&gt;postgres: &lt;/span&gt;&lt;span class="n"&gt;autovacuum&lt;/span&gt; &lt;span class="n"&gt;launcher&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;
+     &lt;span class="mi"&gt;5145&lt;/span&gt;   &lt;span class="sc"&gt;??&lt;/span&gt;  &lt;span class="no"&gt;Ss&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="ss"&gt;postgres: &lt;/span&gt;&lt;span class="n"&gt;stats&lt;/span&gt; &lt;span class="n"&gt;collector&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;
+     &lt;span class="mi"&gt;5133&lt;/span&gt; &lt;span class="n"&gt;s000&lt;/span&gt;  &lt;span class="no"&gt;S&lt;/span&gt;      &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;03&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="no"&gt;Cellar&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;postgresql&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;postgres&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="no"&gt;D&lt;/span&gt; &lt;span class="sr"&gt;/usr/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;postgres&lt;/span&gt;
+     &lt;span class="mi"&gt;5161&lt;/span&gt; &lt;span class="n"&gt;s000&lt;/span&gt;  &lt;span class="no"&gt;U&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="n"&gt;postgres&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Lastly, bundle install &amp;amp; Reboot rails!!&lt;/p&gt;
+
+&lt;p&gt;Side note: 
+A fellow DBC alum recommended this command as well - you might find it useful:
+&lt;code&gt;pg_ctl restart -D /usr/local/var/postgres -m fast&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This command kills postgres entirely, then restarts it…!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Reading code</title>
+    <link rel="alternate" href="http://blog.url.com/2015/09/21/windy-city-rails-day-1/"/>
+    <id>http://blog.url.com/2015/09/21/windy-city-rails-day-1/</id>
+    <published>2015-09-21T13:36:00-05:00</published>
+    <updated>2016-01-21T23:04:41-06:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;I attended &lt;a href="https://www.windycityrails.org" target="_blank"&gt;Windy City Rails&lt;/a&gt; in Chicago last week, and it was my first ruby/rails related conference since graduating from Dev Bootcamp. I learned about a couple of interesting topics of which I will be posting after this.&lt;/p&gt;
+
+&lt;p&gt;One of the more interesting things I learned -a bit of an &amp;#39;aha&amp;#39; moment- was from &lt;a href="https://www.twitter.com/jeffcohen" target='_blank'&gt;Jeff Cohen&lt;/a&gt;.  We spend a lot of time writing code and trying to learn new code by &amp;#39;coding,&amp;#39; but what we tend to forget is that we can learn a ton from &lt;em&gt;reading&lt;/em&gt; code.  It might not seem straightforward but Jeff talked about thinking of your favorite author, and thinking about how many books the author probably read vs. the books he/she wrote.&lt;/p&gt;
+
+&lt;p&gt;A good place to start is looking at your Gemfile, picking one of the gems you like, and checking out their source code on Github. You don&amp;#39;t necessarily need to understand everything in the code, but you will surely see something interesting that you could look up and learn from!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Middleman, you are driving me crazy</title>
+    <link rel="alternate" href="http://blog.url.com/2015/06/19/trying-out-middleman-and-its-driving-me-crazy/"/>
+    <id>http://blog.url.com/2015/06/19/trying-out-middleman-and-its-driving-me-crazy/</id>
+    <published>2015-06-19T16:54:00-05:00</published>
+    <updated>2016-01-21T23:04:41-06:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Ahhhh. I&amp;#39;ve been trying different ways of setting up Middleman, but honestly its been driving me crazy. If I get the blogging template to work, github doesn&amp;#39;t and so forth. This is another attempt.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Asking Questions &amp; Searching for Answers</title>
+    <link rel="alternate" href="http://blog.url.com/2014/12/07/asking-questions/"/>
+    <id>http://blog.url.com/2014/12/07/asking-questions/</id>
+    <published>2014-12-07T15:54:00-06:00</published>
+    <updated>2016-01-21T23:04:41-06:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Today is the last day of Phase 0 for my cohort at DBC, where we have spent the last 9 weeks learning from home. Working remotely has been interesting and very new to me. While we were in touch with each other for pairing sessions and general discussions on a Google group we are part of, a lot of the work was done on our own. This meant that most of the time, when I needed something clarified or got stuck writing code.... oh hello, Google search.&lt;/p&gt;
+
+&lt;p&gt;A lot of my queries led me to questions that had similar keywords posted on Stack Overflow, the Q&amp;amp;A site for widely used by programmers. But the problem was exactly that - similar keywords. The questions that were posted often had nothing to do with what I was looking for and were unhelpful or had very different responses that just got me more confused.&lt;/p&gt;
+
+&lt;p&gt;To tackle this, I worked on improving my search queries:&lt;/p&gt;
+
+&lt;p&gt;&lt;li&gt;Search the web for something very specific - one logical operation&lt;/li&gt;
+&lt;li&gt;Know what you expect your code to do&lt;/li&gt;
+&lt;li&gt;Highlight any constraints (i.e &amp;quot;without jQuery&amp;quot;)&lt;/li&gt;
+&lt;li&gt;End statement with &amp;quot;in [language]&amp;quot;&lt;/li&gt;&lt;/p&gt;
+
+&lt;p&gt;There is plenty of information on the web, but figuring out what to look for really comes down to how well you have broken down the problem at hand (smaller steps to solve it).&lt;/p&gt;
+
+&lt;p&gt;But, even with that, I really struggled with one of our challenges in Phase 0, and was very disappointed when searching online for hours and with multiple different queries was not getting me anywhere. At this point, I realized I had to get some help from someone else, a hint, and that helped me move forward.&lt;/p&gt;
+
+&lt;p&gt;More:
+&lt;a href="http://www.catb.org/~esr/faqs/smart-questions.html"&gt;How to Ask Questions the Smart Way&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Blogging</title>
+    <link rel="alternate" href="http://blog.url.com/2014/12/07/blogging/"/>
+    <id>http://blog.url.com/2014/12/07/blogging/</id>
+    <published>2014-12-07T15:54:00-06:00</published>
+    <updated>2016-01-21T23:04:41-06:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Now that I have my own website, I realize how much work and dedication it takes to keep it up to date and relevant. Blogging itself takes work/effort, and once you have readers (far from this point yet), its a commitment. I read a variety of blogs on a weekly basis, previously about general women&amp;#39;s topics, business, design and style. I now have a roll of technology websites, blogs/ newsletters and twitter feeds to add to this list. Although going through them takes time, it is more of an effort to update as well, and it could really lead into a rabbit hole if you want to add so many different things at once!&lt;/p&gt;
+
+&lt;p&gt;I hope to utilize tools to keep the updating process more efficient and take advantage of technologies that will make my website more powerful...sit tight!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Issues in Tech - Bitcoin</title>
+    <link rel="alternate" href="http://blog.url.com/2014/11/30/bitcoin/"/>
+    <id>http://blog.url.com/2014/11/30/bitcoin/</id>
+    <published>2014-11-30T15:54:00-06:00</published>
+    <updated>2016-01-21T23:04:41-06:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img alt="Bitcoin" src="/images/bitcoin.png" /&gt;&lt;/p&gt;
+
+&lt;h2&gt;What is it?&lt;/h2&gt;
+
+&lt;p&gt;Bitcoin is the world’s first crypto-currency, or digital currency. In its simplest form, bitcoin is an open source payment system, where payments are kept track of in a public ledger or spreadsheet, referred to as the &lt;em&gt;block chain&lt;/em&gt;. Unlike fiat money, bitcoin is not backed by gold or currency, and is not regulated by a central bank or government. Bitcoin was introduced in 2009 by Satoshi Nakamato, a person or group of people that remain &lt;a href="http://en.wikipedia.org/wiki/Satoshi_Nakamoto"&gt;unknown&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The price of bitcoin has fluctuated since its launch, with the current price of one bitcoin valued at $377.81. Get the current price here&lt;/p&gt;
+
+&lt;h2&gt;How does it work?&lt;/h2&gt;
+
+&lt;p&gt;To create bitcoins, computers must solve complex mathematical problems, an activity referred to as mining. Users offer their computing power to verify/record payments in the ledger (the block chain) and are rewarded with bitcoins. This sounds easy, but the network automatically adjusts the difficulty of the math problems. The increasing popularity of bitcoin and the use of powerful, mining specific devices (ASICs) has made it difficult and very cost ineffective for individuals to mine. According to the Bitcoin protocol, only 21 million bitcoins can ever be created by miners, with the amount mined to date at 13.5 million. Nevertheless, there are other ways you can get bitcoins, such as buying them directly from other people, or in exchange for goods and services. Bitcoins can be sent and received electronically using exchanges, or wallet softwares, for a small fee.&lt;/p&gt;
+
+&lt;h2&gt;Why is bitcoin so awesome?&lt;/h2&gt;
+
+&lt;p&gt;Although the use of the currency is still tiny compared to the billion dollar credit card and banking industry, bitcoin is a disruptive technology, and is already changing the way we move money or value. Think of the way the internet disrupted the way we move information or communicate. Bitcoin at its core is a transparent monetary system, based on problem solving rather than on biased politicians and central bankers using monetary policy to increase or decrease the money supply. There are many potential applications for bitcoin and possibilities of how it will impact our lives. To start, today it creates an easy, quick, cheap way to make local and international transfers. It could also replace expensive escrow accounts, with movement of money controlled by conditions that are programmed (think: if (conditions met), then (make transfer), else (don’t transfer)).&lt;/p&gt;
+
+&lt;h2&gt;Issues with Bitcoin&lt;/h2&gt;
+
+&lt;p&gt;Despite its positive contributions, bitcoin has its negative aspects. Its anonymous nature makes it appealing for use in illegal activities. Bitcoin has been used for money laundering and for buying illegal substances and weapons on the anonymous web, TOR and the DarkWeb. Other issues are that currency exchanges have been targeted by hackers, and currency holders could risk losing their bitcoins, since they are not backed or insured (i.e the Mt. Gox &lt;a href="http://online.wsj.com/articles/SB10001424052702303801304579410010379087576"&gt;incident&lt;/a&gt; in early 2014).&lt;/p&gt;
+
+&lt;h2&gt;Recent Developments&lt;/h2&gt;
+
+&lt;p&gt;&lt;li&gt;An increasing number of retailers are accepting bitcoin, with San Francisco retailers leading the way&lt;/li&gt;
+&lt;li&gt;Undergrad students at the Massachusetts Institute of Technology (MIT) received $100 in bitcoins in Fall 2014 to &amp;quot;better understand the emerging technology&amp;quot;&lt;/li&gt;
+&lt;li&gt;PayPal is working to enable certain PayPal merchants to accept bitcoin as a form of payment from their customers.&lt;/li&gt;
+&lt;li&gt;There are now bitcoin ATMs (&amp;quot;BTMs&amp;quot;) nationwide. Find them here.&lt;/li&gt;
+&lt;li&gt;Conan explains &lt;a href="https://www.youtube.com/watch?v=Vd19SboRhVY"&gt;bitcoin&lt;/a&gt;! #kidding&lt;/li&gt;&lt;/p&gt;
+</content>
+  </entry>
+</feed>

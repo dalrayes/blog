@@ -1,0 +1,940 @@
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+@import url(https://fonts.googleapis.com/css?family=Oxygen:400,300,700);
+/* line 1, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_typography.scss */
+body {
+  -webkit-font-feature-settings: "kern", "liga", "pnum";
+  -moz-font-feature-settings: "kern", "liga", "pnum";
+  -ms-font-feature-settings: "kern", "liga", "pnum";
+  font-feature-settings: "kern", "liga", "pnum";
+  -webkit-font-smoothing: antialiased;
+  color: #333;
+  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-size: 1em;
+  line-height: 1.5; }
+
+/* line 10, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_typography.scss */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  line-height: 1.2;
+  margin: 0 0 0.75em; }
+
+/* line 22, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_typography.scss */
+p {
+  margin: 0 0 0.75em; }
+
+/* line 26, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_typography.scss */
+a {
+  color: #07A79D;
+  text-decoration: none;
+  transition: color 0.1s linear; }
+  /* line 31, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_typography.scss */
+  a:active, a:focus, a:hover {
+    color: #045e58; }
+  /* line 37, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_typography.scss */
+  a:active, a:focus {
+    outline: none; }
+
+/* line 43, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_typography.scss */
+hr {
+  border-bottom: 1px solid #ddd;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin: 1.5em 0; }
+
+/* line 51, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_typography.scss */
+img,
+picture {
+  margin: 0;
+  max-width: 100%; }
+
+/* line 1, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_buttons.scss */
+button, input[type="button"], input[type="reset"], input[type="submit"],
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -webkit-font-smoothing: antialiased;
+  background-color: #07A79D;
+  border-radius: 3px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.75em 1em;
+  text-decoration: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap; }
+  /* line 21, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_buttons.scss */
+  button:hover, button:focus, input[type="button"]:hover, input[type="button"]:focus, input[type="reset"]:hover, input[type="reset"]:focus, input[type="submit"]:hover, input[type="submit"]:focus,
+  button:hover,
+  button:focus {
+    background-color: #045e58;
+    color: #fff; }
+  /* line 27, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_buttons.scss */
+  button:disabled, input[type="button"]:disabled, input[type="reset"]:disabled, input[type="submit"]:disabled,
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5; }
+
+/* line 1, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_forms.scss */
+fieldset {
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  margin: 0 0 0.75em;
+  padding: 1.5em; }
+
+/* line 8, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_forms.scss */
+input,
+label,
+select {
+  display: block;
+  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-size: 1em; }
+
+/* line 16, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_forms.scss */
+label {
+  font-weight: 600;
+  margin-bottom: 0.375em; }
+  /* line 20, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_forms.scss */
+  label.required::after {
+    content: "*"; }
+  /* line 24, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_forms.scss */
+  label abbr {
+    display: none; }
+
+/* line 29, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_forms.scss */
+input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], textarea,
+select[multiple=multiple],
+textarea {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-size: 1em;
+  margin-bottom: 0.75em;
+  padding: 0.5em;
+  transition: border-color;
+  width: 100%; }
+  /* line 44, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_forms.scss */
+  input[type="color"]:hover, input[type="date"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="email"]:hover, input[type="month"]:hover, input[type="number"]:hover, input[type="password"]:hover, input[type="search"]:hover, input[type="tel"]:hover, input[type="text"]:hover, input[type="time"]:hover, input[type="url"]:hover, input[type="week"]:hover, textarea:hover,
+  select[multiple=multiple]:hover,
+  textarea:hover {
+    border-color: #c4c4c4; }
+  /* line 48, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_forms.scss */
+  input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="email"]:focus, input[type="month"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="week"]:focus, textarea:focus,
+  select[multiple=multiple]:focus,
+  textarea:focus {
+    border-color: #07A79D;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 5px rgba(6, 143, 134, 0.7);
+    outline: none; }
+
+/* line 55, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_forms.scss */
+textarea {
+  resize: vertical; }
+
+/* line 59, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_forms.scss */
+input[type="search"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none; }
+
+/* line 63, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_forms.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline;
+  margin-right: 0.375em; }
+
+/* line 69, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_forms.scss */
+input[type="file"] {
+  padding-bottom: 0.75em;
+  width: 100%; }
+
+/* line 74, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_forms.scss */
+select {
+  margin-bottom: 1.5em;
+  max-width: 100%;
+  width: auto; }
+
+/* line 1, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_lists.scss */
+ul,
+ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+/* line 20, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_lists.scss */
+dl {
+  margin-bottom: 0.75em; }
+  /* line 23, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_lists.scss */
+  dl dt {
+    font-weight: bold;
+    margin-top: 0.75em; }
+  /* line 28, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_lists.scss */
+  dl dd {
+    margin: 0; }
+
+/* line 1, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_tables.scss */
+table {
+  -webkit-font-feature-settings: "kern", "liga", "tnum";
+  -moz-font-feature-settings: "kern", "liga", "tnum";
+  -ms-font-feature-settings: "kern", "liga", "tnum";
+  font-feature-settings: "kern", "liga", "tnum";
+  border-collapse: collapse;
+  margin: 0.75em 0;
+  table-layout: fixed;
+  width: 100%; }
+
+/* line 9, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_tables.scss */
+th {
+  border-bottom: 1px solid #b7b7b7;
+  font-weight: 600;
+  padding: 0.75em 0;
+  text-align: left; }
+
+/* line 16, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_tables.scss */
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 0.75em 0; }
+
+/* line 21, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_tables.scss */
+tr,
+td,
+th {
+  vertical-align: middle; }
+
+/* line 3, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight {
+  background: #f7f7f7;
+  display: block;
+  line-height: 1.5;
+  overflow: auto;
+  padding: 0.9375rem;
+  white-space: pre;
+  word-wrap: normal; }
+
+/* line 13, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight code {
+  background: none;
+  padding: 0; }
+
+/* line 18, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight table td {
+  padding: 0.3125rem; }
+
+/* line 22, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight table pre {
+  margin: 0; }
+
+/* line 26, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .bp {
+  color: #999; }
+
+/* line 30, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .c,
+.highlight .cd {
+  color: #998;
+  font-style: italic; }
+
+/* line 36, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .c1 {
+  color: #998;
+  font-style: italic; }
+
+/* line 41, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .cm {
+  color: #998;
+  font-style: italic; }
+
+/* line 46, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .cp {
+  color: #999;
+  font-weight: bold; }
+
+/* line 51, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .cs {
+  color: #999;
+  font-style: italic;
+  font-weight: bold; }
+
+/* line 57, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .err {
+  background-color: #e3d2d2;
+  color: #a61717; }
+
+/* line 62, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .gd {
+  background-color: #fdd;
+  color: #000; }
+
+/* line 67, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .ge {
+  color: #000;
+  font-style: italic; }
+
+/* line 72, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .gh {
+  color: #999; }
+
+/* line 76, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .gi {
+  background-color: #dfd;
+  color: #000; }
+
+/* line 81, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .go {
+  color: #888; }
+
+/* line 85, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .gp {
+  color: #555; }
+
+/* line 89, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .gr {
+  color: #a00; }
+
+/* line 93, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .gs {
+  font-weight: bold; }
+
+/* line 97, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .gt {
+  color: #a00; }
+
+/* line 101, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .gu {
+  color: #aaa; }
+
+/* line 105, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .il {
+  color: #099; }
+
+/* line 109, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .k,
+.highlight .kv {
+  color: #000;
+  font-weight: bold; }
+
+/* line 115, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .kc {
+  color: #000;
+  font-weight: bold; }
+
+/* line 120, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .kd {
+  color: #000;
+  font-weight: bold; }
+
+/* line 125, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .kn {
+  color: #000;
+  font-weight: bold; }
+
+/* line 130, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .kp {
+  color: #000;
+  font-weight: bold; }
+
+/* line 135, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .kr {
+  color: #000;
+  font-weight: bold; }
+
+/* line 140, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .kt {
+  color: #458;
+  font-weight: bold; }
+
+/* line 145, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .m,
+.highlight .mb,
+.highlight .mx {
+  color: #099; }
+
+/* line 151, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .mf {
+  color: #099; }
+
+/* line 155, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .mh {
+  color: #099; }
+
+/* line 159, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .mi {
+  color: #099; }
+
+/* line 163, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .mo {
+  color: #099; }
+
+/* line 167, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .na {
+  color: #008080; }
+
+/* line 171, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .nb {
+  color: #0086b3; }
+
+/* line 175, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .nc {
+  color: #458;
+  font-weight: bold; }
+
+/* line 180, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold; }
+
+/* line 185, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .ne {
+  color: #900;
+  font-weight: bold; }
+
+/* line 190, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .nf {
+  color: #900;
+  font-weight: bold; }
+
+/* line 195, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .ni {
+  color: #800080; }
+
+/* line 199, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .nl {
+  color: #900;
+  font-weight: bold; }
+
+/* line 204, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .nn {
+  color: #555; }
+
+/* line 208, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .no {
+  color: #008080; }
+
+/* line 212, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .nt {
+  color: #000080; }
+
+/* line 216, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .s {
+  color: #d14; }
+
+/* line 220, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .s1 {
+  color: #d14; }
+
+/* line 224, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .s2 {
+  color: #d14; }
+
+/* line 228, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .sc {
+  color: #d14; }
+
+/* line 232, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .sd {
+  color: #d14; }
+
+/* line 236, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .se {
+  color: #d14; }
+
+/* line 240, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .sh {
+  color: #d14; }
+
+/* line 244, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .si {
+  color: #d14; }
+
+/* line 248, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .sr {
+  color: #009926; }
+
+/* line 252, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .ss {
+  color: #990073; }
+
+/* line 256, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .sx {
+  color: #d14; }
+
+/* line 260, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .vc {
+  color: #008080; }
+
+/* line 264, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .vg {
+  color: #008080; }
+
+/* line 268, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .vi {
+  color: #008080; }
+
+/* line 272, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .nv {
+  color: #008080; }
+
+/* line 276, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .o {
+  color: #000;
+  font-weight: bold; }
+
+/* line 281, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .ow {
+  color: #000;
+  font-weight: bold; }
+
+/* line 286, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_syntax.scss */
+.highlight .w {
+  color: #bbb; }
+
+/* line 1, /Users/dalali/Projects/DevBC/detour/source/stylesheets/base/_tags.scss */
+.tags a {
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  position: relative;
+  margin: 0 16px 8px 0;
+  padding: 0 5px 0 5px;
+  background: #999;
+  -webkit-border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  border-top-right-radius: 3px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 10px;
+  font-family: "Lucida Grande","Lucida Sans Unicode",Verdana,sans-serif;
+  text-decoration: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  white-space: nowrap; }
+
+/* Bitters needs to be imported before Neat */
+/* line 4, /Users/dalali/.rbenv/versions/2.2.1/lib/ruby/gems/2.2.0/gems/neat-1.7.2/app/assets/stylesheets/grid/_box-sizing.scss */
+html {
+  box-sizing: border-box; }
+
+/* line 9, /Users/dalali/.rbenv/versions/2.2.1/lib/ruby/gems/2.2.0/gems/neat-1.7.2/app/assets/stylesheets/grid/_box-sizing.scss */
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+/* line 2, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_layout.scss */
+body {
+  background-image: url("/images/geometry2.png"); }
+
+/* line 6, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_layout.scss */
+#main {
+  max-width: 43.75em;
+  margin-left: auto;
+  margin-right: auto; }
+  /* line 20, /Users/dalali/.rbenv/versions/2.2.1/lib/ruby/gems/2.2.0/gems/bourbon-4.2.3/app/assets/stylesheets/addons/_clearfix.scss */
+  #main::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+/* line 10, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_layout.scss */
+ol {
+  font-size: 1em;
+  font-weight: 500; }
+  /* line 14, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_layout.scss */
+  ol li {
+    margin: .5em 0; }
+    /* line 17, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_layout.scss */
+    ol li span {
+      display: inline-block; }
+      /* line 20, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_layout.scss */
+      ol li span:before {
+        content: '/';
+        margin: 0 .3em; }
+
+/* line 28, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_layout.scss */
+.large-column {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 57.35098%; }
+  /* line 89, /Users/dalali/.rbenv/versions/2.2.1/lib/ruby/gems/2.2.0/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
+  .large-column:last-child {
+    margin-right: 0; }
+
+/* line 32, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_layout.scss */
+.small-column {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 40.29137%; }
+  /* line 89, /Users/dalali/.rbenv/versions/2.2.1/lib/ruby/gems/2.2.0/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
+  .small-column:last-child {
+    margin-right: 0; }
+
+/* line 36, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_layout.scss */
+.more-link {
+  text-align: right; }
+
+/* line 1, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_nav.scss */
+nav {
+  border-bottom: 1px solid #ddd;
+  margin: 1.875em 0; }
+  /* line 5, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_nav.scss */
+  nav ul {
+    display: inline-block;
+    margin-bottom: 0.625em; }
+
+/* line 11, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_nav.scss */
+.blog-title {
+  font-family: 'Poiret One', cursive;
+  font-size: 3em;
+  font-weight: 700;
+  letter-spacing: 4px; }
+
+/* line 1, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_footer.scss */
+footer {
+  border-top: 1px solid #ddd;
+  margin: 2em 0;
+  padding-top: 2em;
+  font-size: 0.8em; }
+  /* line 7, /Users/dalali/Projects/DevBC/detour/source/stylesheets/partials/_footer.scss */
+  footer .tag-list {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%;
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 20px;
+    column-count: 2;
+    column-gap: 20px; }
+    /* line 89, /Users/dalali/.rbenv/versions/2.2.1/lib/ruby/gems/2.2.0/gems/neat-1.7.2/app/assets/stylesheets/grid/_span-columns.scss */
+    footer .tag-list:last-child {
+      margin-right: 0; }
+
+/* line 1, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight table td {
+  padding: 5px; }
+
+/* line 2, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight table pre {
+  margin: 0; }
+
+/* line 3, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .cm {
+  color: #999988;
+  font-style: italic; }
+
+/* line 7, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .cp {
+  color: #999999;
+  font-weight: bold; }
+
+/* line 11, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .c1 {
+  color: #999988;
+  font-style: italic; }
+
+/* line 15, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic; }
+
+/* line 20, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .c, .highlight .cd {
+  color: #999988;
+  font-style: italic; }
+
+/* line 24, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2; }
+
+/* line 28, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd; }
+
+/* line 32, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .ge {
+  color: #000000;
+  font-style: italic; }
+
+/* line 36, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .gr {
+  color: #aa0000; }
+
+/* line 39, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .gh {
+  color: #999999; }
+
+/* line 42, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd; }
+
+/* line 46, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .go {
+  color: #888888; }
+
+/* line 49, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .gp {
+  color: #555555; }
+
+/* line 52, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .gs {
+  font-weight: bold; }
+
+/* line 55, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .gu {
+  color: #aaaaaa; }
+
+/* line 58, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .gt {
+  color: #aa0000; }
+
+/* line 61, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .kc {
+  color: #000000;
+  font-weight: bold; }
+
+/* line 65, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .kd {
+  color: #000000;
+  font-weight: bold; }
+
+/* line 69, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .kn {
+  color: #000000;
+  font-weight: bold; }
+
+/* line 73, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .kp {
+  color: #000000;
+  font-weight: bold; }
+
+/* line 77, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .kr {
+  color: #000000;
+  font-weight: bold; }
+
+/* line 81, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .kt {
+  color: #445588;
+  font-weight: bold; }
+
+/* line 85, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold; }
+
+/* line 89, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .mf {
+  color: #009999; }
+
+/* line 92, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .mh {
+  color: #009999; }
+
+/* line 95, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .il {
+  color: #009999; }
+
+/* line 98, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .mi {
+  color: #009999; }
+
+/* line 101, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .mo {
+  color: #009999; }
+
+/* line 104, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999; }
+
+/* line 107, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .sb {
+  color: #d14; }
+
+/* line 110, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .sc {
+  color: #d14; }
+
+/* line 113, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .sd {
+  color: #d14; }
+
+/* line 116, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .s2 {
+  color: #d14; }
+
+/* line 119, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .se {
+  color: #d14; }
+
+/* line 122, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .sh {
+  color: #d14; }
+
+/* line 125, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .si {
+  color: #d14; }
+
+/* line 128, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .sx {
+  color: #d14; }
+
+/* line 131, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .sr {
+  color: #009926; }
+
+/* line 134, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .s1 {
+  color: #d14; }
+
+/* line 137, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .ss {
+  color: #990073; }
+
+/* line 140, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .s {
+  color: #d14; }
+
+/* line 143, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .na {
+  color: #008080; }
+
+/* line 146, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .bp {
+  color: #999999; }
+
+/* line 149, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .nb {
+  color: #0086B3; }
+
+/* line 152, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .nc {
+  color: #445588;
+  font-weight: bold; }
+
+/* line 156, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .no {
+  color: #008080; }
+
+/* line 159, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold; }
+
+/* line 163, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .ni {
+  color: #800080; }
+
+/* line 166, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .ne {
+  color: #990000;
+  font-weight: bold; }
+
+/* line 170, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .nf {
+  color: #990000;
+  font-weight: bold; }
+
+/* line 174, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .nl {
+  color: #990000;
+  font-weight: bold; }
+
+/* line 178, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .nn {
+  color: #555555; }
+
+/* line 181, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .nt {
+  color: #000080; }
+
+/* line 184, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .vc {
+  color: #008080; }
+
+/* line 187, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .vg {
+  color: #008080; }
+
+/* line 190, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .vi {
+  color: #008080; }
+
+/* line 193, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .nv {
+  color: #008080; }
+
+/* line 196, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .ow {
+  color: #000000;
+  font-weight: bold; }
+
+/* line 200, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .o {
+  color: #000000;
+  font-weight: bold; }
+
+/* line 204, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight .w {
+  color: #bbbbbb; }
+
+/* line 207, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight {
+  background-color: #f8f8f8; }
+
+/* line 210, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+pre {
+  border: solid 1px #ddd;
+  background: #eee;
+  padding: 1.5rem 3.5%;
+  line-height: 23px;
+  margin-bottom: 30px;
+  white-space: pre;
+  overflow-x: auto;
+  word-break: inherit;
+  word-wrap: inherit;
+  font-size: 1.2em; }
+
+/* line 223, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight td {
+  padding: 8px 15px; }
+
+/* line 227, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.highlight {
+  background-color: #eee; }
+
+/* line 231, /Users/dalali/Projects/DevBC/detour/source/stylesheets/highlight.css.erb */
+.gl {
+  background: #fafafa;
+  border-right: 1px solid #ddd;
+  color: #999;
+  /* Stop line numbers being visually selected */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
